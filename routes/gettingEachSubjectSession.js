@@ -11,11 +11,13 @@ module.exports = {
             const theListofLearners = await sendOrGetData.learnersDoingCertainSubject(subjectId);
             const theListOfTeachers = await sendOrGetData.teachersTeachingCertainSubject(subjectId)
             const studentSubjects = await sendOrGetData.getSubjects();
+            const listOfTeachers = await sendOrGetData.showingAvailableTeachers()
             res.render('subject',{ 
                 subjectName,
                 theListofLearners,
                 theListOfTeachers,
-                studentSubjects
+                studentSubjects,
+                listOfTeachers
             });
 
         } 

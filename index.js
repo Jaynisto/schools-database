@@ -13,8 +13,9 @@ const accessingSubjectScreenRoute = require('./routes/accessingSubjectsPage');
 const subjectSessionRoute = require('./routes/subjectSelection');
 const gettingSubjectSessionRoute = require('./routes/gettingEachSubjectSession');
 const moderationPageRoute = require('./routes/moderationPage');
-const listOfStudentsRoute = require('./routes/learnersDoingCertainModules')
-const clearingStudentRoute = require('./routes/clearingStudents')
+const listOfStudentsRoute = require('./routes/learnersDoingCertainModules');
+const clearingStudentRoute = require('./routes/clearingTeachers');
+const linkingTeacherToSubjectRoute = require('./routes/addTeacher');
 
 let app = express()
 
@@ -53,7 +54,8 @@ app.post('/studentRegistration', addingStudentRoute.postNewStudentPage);
 app.get('/subject/:subjectName', gettingSubjectSessionRoute.showSubjectInfoPage)
 app.get('/teacherReg', teacherRegistrationScreenRoute.showTeacherRegistrationPage);
 app.get('/studentsReg', studentRegistrationScreenRoute.showStudentRegistrationPage);
-app.post('/clearingStudents', clearingStudentRoute.clearingStudent)
+app.post('/clearingTeacher', clearingStudentRoute.clearingTeacher)
+app.post('/addTeacher', linkingTeacherToSubjectRoute.selectTeacher)
 
 
 const PORT = process.env.PORT || 5050;

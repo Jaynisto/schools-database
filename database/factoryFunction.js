@@ -46,10 +46,10 @@ module.exports = function schools(db) {
         return name;
     }
 
-    async function clearingStudent(id){
-        const query = "DELETE from learner_subject where id = $1"
-        const studentId = [id];
-        const clear = await db.none(query,studentId);
+    async function clearingTeacher(id){
+        const query = "DELETE from teacher_subject where teacher_id = $1"
+        const teacherId = [id];
+        const clear = await db.none(query,teacherId);
         return clear;
     }
 
@@ -75,6 +75,17 @@ module.exports = function schools(db) {
         return listOfTeachers;
     }
 
+    async function showingAvailableTeachers(){
+        const teachers = await db.many('SELECT * FROM teacher;');
+        return teachers;
+    }
+
+    async function linkTeacherToSubject(teacheId, subjectId){
+        const query = 'select * from link_teacher_to_subject($1, $2)';
+        const values = [teacheId, subjectId]
+        await db.oneOrNone(query,values)
+    }
+
     return {
         getSubjects,
         getGrade ,
@@ -87,6 +98,8 @@ module.exports = function schools(db) {
         gettingTheSubjectId ,
         learnersDoingCertainSubject,
         teachersTeachingCertainSubject,
-        clearingStudent     
+        clearingTeacher ,
+        showingAvailableTeachers,
+        linkTeacherToSubject   
     }
 }
