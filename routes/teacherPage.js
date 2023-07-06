@@ -1,13 +1,19 @@
+const db = require("../database/connectionString");
+const factoryFunction = require("../database/factoryFunction");
+let sendOrGetData = factoryFunction(db);
+
 module.exports = {
-    showTeacherPage : async function (req, res, next) {
-      try {
+    showingAvailableTeachers : async function (req, res, next) {
+        try {
+            
+            const listOfTeachers = await sendOrGetData.showingAvailableTeachers()
+            res.render("teacher", {
+                listOfTeachers
+            })
 
-        res.render("teacher");
-        
-      } 
+        } 
         catch (err) {
-
-          next(err);
+            next(err);
         }
     }
 };  

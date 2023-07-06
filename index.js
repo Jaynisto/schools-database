@@ -2,20 +2,8 @@ const express = require("express");
 const exphbs = require('express-handlebars');
 const bodyParser = require("body-parser");
 const session = require("express-session");
-const homeRoute = require('./routes/homePage');
-const addingTeacherRoute = require('./routes/addingNewTeacherPage');
-const addingStudentRoute = require('./routes/addingNewStudentPage')
-const studentRegistrationScreenRoute = require('./routes/studentRegistrationPage');
-const teacherRegistrationScreenRoute = require('./routes/teacherRegistrationPage');
-const accessingTeacherScreenRoute = require('./routes/teacherPage');
-const accessingStudentScreenRoute = require('./routes/accessingTheStudentScreen');
-const accessingSubjectScreenRoute = require('./routes/accessingSubjectsPage');
-const subjectSessionRoute = require('./routes/subjectSelection');
-const gettingSubjectSessionRoute = require('./routes/gettingEachSubjectSession');
-const moderationPageRoute = require('./routes/moderationPage');
-const listOfStudentsRoute = require('./routes/learnersDoingCertainModules');
-const clearingStudentRoute = require('./routes/clearingTeachers');
-const linkingTeacherToSubjectRoute = require('./routes/addTeacher');
+const path = require('path');
+const studentRoute = require('./routes/studentRoutes')
 
 let app = express()
 
@@ -41,21 +29,13 @@ app.use(session({
     saveUninitialized: true
 }));
 
+// Set the views directory
 
-app.get('/', homeRoute.showHomePage);
-app.get('/hod', listOfStudentsRoute.showAvailabeleOptions);
-app.get('/subMod', moderationPageRoute.showModerationPage);
-app.post('/subject', subjectSessionRoute.makeSubjectSession);
-app.get('/subject',accessingSubjectScreenRoute.showSubjectPage);
-app.get('/teacher',accessingTeacherScreenRoute.showTeacherPage);
-app.get('/students', accessingStudentScreenRoute.showStudentPage);
-app.post('/teacherRegistration', addingTeacherRoute.postNewTeacherPage);
-app.post('/studentRegistration', addingStudentRoute.postNewStudentPage);
-app.get('/subject/:subjectName', gettingSubjectSessionRoute.showSubjectInfoPage)
-app.get('/teacherReg', teacherRegistrationScreenRoute.showTeacherRegistrationPage);
-app.get('/studentsReg', studentRegistrationScreenRoute.showStudentRegistrationPage);
-app.post('/clearingTeacher', clearingStudentRoute.clearingTeacher)
-app.post('/addTeacher', linkingTeacherToSubjectRoute.selectTeacher)
+
+
+app.get('/', studentRoute);
+app.use('/students', studentRoute);
+
 
 
 const PORT = process.env.PORT || 5050;
