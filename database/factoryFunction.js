@@ -1,10 +1,5 @@
 module.exports = function schools(db) {
 
-    async function getSubjects() {
-        const subjects = await db.manyOrNone('SELECT * FROM subject;');
-        return subjects;
-    }
-
     async function getGrade() {
         const studentGrade = await db.many('SELECT * FROM grade;');
         return studentGrade;

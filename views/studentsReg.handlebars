@@ -23,45 +23,51 @@
                     <a href="/" class="nav-link">Homepage</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/studentsReg" class="nav-link">Add Students</a>
+                    <a href="/students/create-student" class="nav-link">Add Students</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/teacherReg" class="nav-link">Add Teacher</a>
+                    <a href="/teachers/create-teacher" class="nav-link">Add Teacher</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/hod" class="nav-link">Head Of Department</a>
+                    <a href="/head-of-department/moderation" class="nav-link">Head Of Department</a>
                 </li>
             </ul>
         </div>
     </nav>
     <br>
     <br><br>
-    <form action="/students" method="POST">
-        <div class="row mb-3">
-            <label for="inputFirstName" class="col-sm-2 col-form-label">First Name</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" name="firstName">
+    <form action="/students/create-student" method="POST">
+        <div class="col">
+            <div class="col-xs-4">
+                <label for="inputFirstName" class="col-sm-2 col-form-label">First Name</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="firstName">
+                </div>
             </div>
-        </div>
-        <div class="row mb-3">
-            <label for="inputLastName" class="col-sm-2 col-form-label">Last Name</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" name="lastName">
+            <div class="col-xs-4">
+                <label for="inputLastName" class="col-sm-2 col-form-label">Last Name</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="lastName">
+                </div>
             </div>
-        </div>
-        <div class="row mb-3">
-            <label for="inputEmailAddress" class="col-sm-2 col-form-label">Email Address</label>
-            <div class="col-sm-10">
-                <input type="email" class="form-control" name="email">
+            <div class="col-xs-4">
+                <label for="inputEmailAddress" class="col-sm-2 col-form-label">Email Address</label>
+                <div class="col-sm-10">
+                    <input type="email" class="form-control" name="email">
+                </div>
             </div>
+            <br>
+            <div class="dropdown text-center">
+                <select name="options" class="btn btn-secondary dropdown-toggle">
+                <option value="">Select Subject</option>
+                {{#each grade}}
+                    <option value="{{id}}">{{name}}</option>
+                {{/each}}
+                </select>
+            </div>
+            <br>
         </div>
-        <div class="btn-group btn-group-toggle" data-toggle="buttons">
-            {{#each learnersGrade}}
-                <label class="btn btn-secondary {{#if active}}active{{/if}}">
-                <input type="radio" name="options" value="{{id}}" autocomplete="off" {{#if checked}}checked{{/if}}> {{name}}
-                </label>
-            {{/each}}
-        </div><br>
+        <br>
         <button type="submit" class="btn btn-primary">SUBMIT</button>
     </form>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

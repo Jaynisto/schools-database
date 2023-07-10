@@ -2,8 +2,10 @@ const express = require("express");
 const exphbs = require('express-handlebars');
 const bodyParser = require("body-parser");
 const session = require("express-session");
-const path = require('path');
-const studentRoute = require('./routes/studentRoutes')
+const studentRoute = require('./routes/studentRoutes');
+const teachersRoute = require('./routes/teachersRoutes');
+const headOfDepartmentRoute = require('./routes/headOfDepartmentRoutes')
+const subjectsRoute = require('./routes/subjectsRoutes')
 
 let app = express()
 
@@ -32,9 +34,11 @@ app.use(session({
 // Set the views directory
 
 
-
-app.get('/', studentRoute);
+app.use('/', studentRoute);
 app.use('/students', studentRoute);
+app.use('/teachers', teachersRoute);
+app.use('/head-of-department', headOfDepartmentRoute);
+app.use('/subjects', subjectsRoute)
 
 
 

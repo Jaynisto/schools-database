@@ -3,7 +3,7 @@ const db = require("../database/connectionString");
 async function getAllStudents(req, res){
     try{
         const students = await db.many('SELECT * FROM learner;')
-        res.status(200).json(students)
+        // res.status(200).json(students)
     res.render('index', { students });
 
     }
@@ -14,11 +14,9 @@ async function getAllStudents(req, res){
 
 async function createStudent(req, res){
     const { firstName, lastName, email, options} = req.body;
-    console.log(req.body)
     try{
 
        await db.many('SELECT * FROM add_learner($1, $2, $3, $4);', [firstName, lastName, email, options]);
-        
        res.render('studentsReg');
 
     }
@@ -29,7 +27,10 @@ async function createStudent(req, res){
 
 async function createStudentPage(req, res){
     try{
-        res.render('studentsReg')
+        const grade = await db.many('SELECT * FROM grade;');
+        res.render('studentsReg', {
+            grade
+        })
     }
     catch(err){
         throw new Error(err)
@@ -48,11 +49,11 @@ async function deleteStudent(req, res){
 }
 
 async function getStudent(req, res){
-    const { userId } = req.params;
+    // const { userId } = req.params;
     try{
 
-        const learner = await db.any('SELECT * FROM learner WHERE id = $1;', userId);
-        res.status(200).json(learner)
+        // const learner = await db.any('SELECT * FROM learner WHERE id = $1;', userId);
+        // res.status(200).json(learner)
 
     }
     catch(err){
