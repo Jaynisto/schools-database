@@ -62,12 +62,22 @@
             </tr>
         </thead>
         <tbody>
-            {{#each theListOfTeachers}}
+            {{#each teacher}}
             <tr>
                 <th scope="row">{{id}}</th>
                 <td>{{first_name}}</td>
                 <td>{{last_name}}</td>
                 <td>{{email}}</td>
+                <td>
+                    
+                    <div class="col-md-6 mb-3">
+                        <form action="/clearingTeacher" method="post">
+                            <input type="hidden" name="subjectName" value="{{subjectName}}">
+                            <button type="submit" class="btn btn-danger">Clear Teacher</button>
+                        </form>
+                    </div>
+                    
+                </td>
             </tr>
             {{/each}}
         </tbody>

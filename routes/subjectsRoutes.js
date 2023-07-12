@@ -1,9 +1,10 @@
 const express = require('express');
 const subjectsRoute = express.Router();
-const { getAllSubjets, getSubject, getSubjectsParam, postSubject,theSubjectPage } = require('../controller/subjectController')
+const { gettingTheSubjectPage, postingTheSubject } = require('../controller/subjectController');
 
-subjectsRoute.get('/selection', theSubjectPage)
-subjectsRoute.post('/', postSubject)
-subjectsRoute.get('/', getSubjectsParam)
+subjectsRoute.get('/subject-selection', gettingTheSubjectPage)
+subjectsRoute.post('/',postingTheSubject)
+subjectsRoute.get('/:subjectId', gettingTheSubjectPage)
+
 
 module.exports = subjectsRoute 
