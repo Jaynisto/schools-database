@@ -69,11 +69,10 @@
                 <td>{{last_name}}</td>
                 <td>{{email}}</td>
                 <td>
-                    
                     <div class="col-md-6 mb-3">
-                        <form action="/clearingTeacher" method="post">
-                            <input type="hidden" name="subjectName" value="{{subjectName}}">
-                            <button type="submit" class="btn btn-danger">Clear Teacher</button>
+                        <form action="/subjects/remove-teacher" method="post">
+                            <input type="hidden" name="teachersName" value="{{id}}">
+                            <button type="submit" class="btn btn-danger">Remove Teacher</button>
                         </form>
                     </div>
                     
@@ -84,19 +83,6 @@
     </table>
     <br>
     <div class="row">
-        <div class="col-md-6 mb-3">
-            <form action="/clearingTeacher" method="post">
-            <input type="hidden" name="subjectName" value="{{subjectName}}">
-            <div class="form-group">
-                <select name="teacherId" class="form-control">
-                {{#each theListOfTeachers}}
-                    <option value="{{id}}">{{first_name}}</option>
-                {{/each}}
-                </select>
-            </div>
-            <button type="submit" class="btn btn-danger">Clear Teacher</button>
-            </form>
-        </div>
         <div class="col-md-6 mb-3">
             <form action="/addTeacher" method="post">
             <input type="hidden" name="subjectName" value="{{subjectName}}">

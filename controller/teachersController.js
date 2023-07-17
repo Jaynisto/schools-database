@@ -44,9 +44,12 @@ async function  createTeacherPage(req, res){
 }
 
 async function deleteTeacher(req,res){
-    try{
+    
 
+    try{
+        
     }
+
     catch(err){
         throw new Error(err)
     }

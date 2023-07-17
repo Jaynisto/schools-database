@@ -4,7 +4,7 @@ const { getAllTeachers, getTeacher, createTeacher, deleteTeacher, updateTeacher,
 
 teachersRoute.get('/', getAllTeachers);
 teachersRoute.post('/create-teacher', createTeacher)
-teachersRoute.delete('/:userName', deleteTeacher)
+teachersRoute.delete('/', deleteTeacher)
 teachersRoute.get('/create-teacher', createTeacherPage)
 teachersRoute.get('/:userName', getTeacher)
 teachersRoute.put('/:userName', updateTeacher)
