@@ -2,10 +2,7 @@ const express = require("express");
 const exphbs = require('express-handlebars');
 const bodyParser = require("body-parser");
 const session = require("express-session");
-const studentRoute = require('./routes/studentRoutes');
-const teachersRoute = require('./routes/teachersRoutes');
-const headOfDepartmentRoute = require('./routes/headOfDepartmentRoutes')
-const subjectsRoute = require('./routes/subjectsRoutes')
+const routes = require('./routes/miniApp');
 
 let app = express()
 
@@ -34,12 +31,13 @@ app.use(session({
 // Set the views directory
 
 
-app.use('/', studentRoute);
-app.use('/students', studentRoute);
-app.use('/teachers', teachersRoute);
-app.use('/head-of-department', headOfDepartmentRoute);
-app.use('/subjects', subjectsRoute)
-
+app.get('/', routes.showHomePage)
+app.get('/student/register-student', routes.showStudentsRegistrationPage)
+app.get('/teacher/register-teacher', routes.showTeachersRegistrationPage)
+app.get('/head-of-department/moderation', routes.showHeadOfDepartmentPage)
+app.get('/subjects/subject-selection', routes.showSubjectModerationPage)
+app.post('/student/register-student',routes.postStudentData)
+app.post('/teacher/register-teacher',routes.postTeachersData)
 
 
 const PORT = process.env.PORT || 5050;

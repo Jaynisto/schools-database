@@ -5,13 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css">
+    {{!-- fontAwesom --}}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     {{!-- bootstrap --}}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
     crossorigin="anonymous">
     <title>Teacher</title>
 </head>
-<body>
+<body class="custom-background">
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <a class="navbar-brand text-primary-emphasis" href="/">Schools</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,10 +26,10 @@
                     <a href="/" class="nav-link">Homepage</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/students/create-student" class="nav-link">Add Students</a>
+                    <a href="/student/register-student" class="nav-link">Add Students</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/teachers/create-teacher" class="nav-link">Add Teacher</a>
+                    <a href="/teacher/register-teacher" class="nav-link">Add Teacher</a>
                 </li>
                 <li class="nav-item">
                     <a href="/head-of-department/moderation" class="nav-link">Head Of Department</a>
@@ -38,38 +41,55 @@
     <br>
     <br>
     <br>
-    <form action="/teachers/create-teacher" method="POST">
-        <div class="row mb-3">
-            <label for="inputFirstName" class="col-sm-2 col-form-label">First Name</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" name="firstName">
+    <section class="vh-100 gradient-custom">
+        <div class="container py-5 h-100">
+            <div class="row justify-content-center align-items-center h-100">
+            <div class="col-12 col-lg-9 col-xl-7">
+                <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                <div class="card-body p-4 p-md-5">
+                    <h3 class="mb-4 pb-2 pb-md-0 mb-md-5"><i class="fa fa-user-circle" aria-hidden="true"></i> Teacher's Registration Form</h3>
+                    <form action="/teacher/register-teacher" method="POST">
+
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div class="form-outline">
+                                    <input type="text" name="firstName" class="form-control form-control-lg" placeholder="First Name"/>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="form-outline">
+                                    <input type="text" name="lastName" class="form-control form-control-lg" placeholder="Last Name"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div class="form-outline">
+                                <input type="email" name="email" class="form-control form-control-lg" placeholder="Email"/>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="form-outline">
+                                <select name="school" class="select form-control form-control-lg">
+                                    <option disabled selected>Choose School</option>
+                                    {{#each schools}}
+                                    <option value="{{id}}">{{school_name}}</option>
+                                    {{/each}}
+                                </select>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg"><i class="fa fa-paper-plane-o" aria-hidden="true"></i> Submit</button>
+                    </form>
+                </div>
+                </div>
+            </div>
             </div>
         </div>
-        <div class="row mb-3">
-            <label for="inputLastName" class="col-sm-2 col-form-label">Last Name</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" name="lastName">
-            </div>
-        </div>
-        <div class="row mb-3">
-            <label for="inputEmailAddress" class="col-sm-2 col-form-label">Email Address</label>
-            <div class="col-sm-10">
-                <input type="email" class="form-control" name="email">
-            </div>
-        </div><br>
-        <div class="dropdown text-center">
-                <select name="options" class="btn btn-secondary dropdown-toggle">
-                <option value="">Select School</option>
-                {{#each schools}}
-                    <option value="{{id}}">{{school_name}}</option>
-                {{/each}}
-                </select>
-        </div>
-        <br>
-        <button type="submit" class="btn btn-primary">SUBMIT</button>
-    </form>
+    </section>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>

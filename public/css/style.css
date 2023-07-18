@@ -1,130 +1,14 @@
-h1{
-  text-align: center;
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+  font-size: 1rem;
+  line-height: 2.15;
+  padding-left: .75em;
+  padding-right: .75em;
 }
-.students {
-  display: flex;
-}
-
-.myForms{
-  display: flex;
-  justify-content: space-around;
-  padding-top: 35px;
-}
-
-.myradios {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
-
-.letsPlay {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.finding {
-  display: flex;
-  flex-direction: column;
-}
-  
-
-/* my student form */
-.form {
-  background-color: #fff;
-  display: block;
-  padding: 1rem;
-  max-width: 350px;
-  border-radius: 0.5rem;
-  box-shadow: 0 10px 15px -3px rgb(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.5);
-  margin-left: 35%;
-  margin-right: 15%;
-  margin-top: 15%;
-}
-
-.form-title {
-  font-size: 1.2rem;
-  line-height: 1.75rem;
-  font-weight: 600;
-  text-align: center;
-  color: #000;
-}
-
-.input-container {
-  position: relative;
-}
-
-.input-container input, .form button {
-  outline: none;
-  border: 1px solid #e5e7eb;
-  margin: 8px 0;
-}
-
-.input-container input {
-  background-color: #fff;
-  padding: 1rem;
-  padding-right: 2rem;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  width: 300px;
-  border-radius: 0.5rem;
-  box-shadow: 0 1px 2px p rgb(0, 0, 0, 0.05);
-}
-
-.submit {
-  display: block;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
-  background-color: #4F46E5;
-  color: #ffffff;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  font-weight: 500;
-  width: 100%;
-  border-radius: 0.5rem;
-  text-transform: uppercase;
-}
-
-@media screen and (min-width: 680px) {
-  .form {
-    background-color: #fff;
-    display: inline-block;
-    padding: 1rem;
-    max-width: auto;
-    border-radius: 0.5rem;
-    box-shadow: 0 10px 15px -3px rgb(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.5);
-    position: absolute;
-    top: 25%;
-    left: 15%;
-    transform: translate(-50%, -50%);   
-    z-index: 1; 
-  } 
-  
-}
-
-@media (max-width: 767px) {
-  form {
-    margin-top: 70px;
-  }
-}
-
-@media screen and (max-width: 680px) {
-  .form {
-    background-color: #fff;
-    display: inline-block;
-    padding: 1rem;
-    max-width: auto;
-    border-radius: 0.5rem;
-    box-shadow: 0 10px 15px -3px rgb(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.5);
-    margin-top: 5%;
-    position: absolute;
-    top: 35%;
-    left: 15%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-  }
+.card-registration .select-arrow {
+  top: 13px;
 }
 
 
-  
+.custom-background {
+  background-image: linear-gradient(to right, #d3cce3, #e9e4f0);
+}
