@@ -73,11 +73,75 @@ module.exports = {
 
     showSubjectModerationPage : async function (req, res, next){
         try{
-            res.render('subject')
+            const subjects = await db.manyOrNone('SELECT * FROM subject;')
+            
+            res.render('subject', {
+                subjects
+             
+            })
         }
         catch(err){
             next(err)
         }
-    }
+    },
+
+    subjectSession : async function (req, res, next){
+        const { subjectId } = req.body;
+        try{
+            const { name } = await db.oneOrNone('SELECT * FROM subject WHERE id = $1;',[subjectId])
+            req.session.name = name;
+            res.redirect(`/subjects/subject-selection/${name}`)
+        }
+        catch(err){
+            next(err)
+        }
+    },
+    gettingSubjectSession : async function (req,res,next){
+        const subjectName = req.params.name;
+        try{
+            const subjects = await db.manyOrNone('SELECT * FROM subject;')
+            const { id } = await db.oneOrNone('SELECT * FROM subject WHERE name = $1;',[subjectName])
+            const teachers = await db.any('SELECT * FROM find_teacher_for_certain_subject($1);',[id])
+            const listOfTeachers = await db.many('SELECT * FROM teacher;')
+            res.render('subject', {
+                subjects,
+                teachers,
+                subjectName,
+                listOfTeachers
+            })
+        }
+        catch(err){
+            next(err)
+        }
+    },
+
+    removingTeacherFromSubjects: async function (req, res, next) {
+        const subjectName  = req.session.name;
+        const { teachersId } = req.body;
+        try {
+          await db.none('DELETE from teacher_subject where teacher_id = $1', [teachersId])
+          res.redirect(`/subjects/subject-selection/${subjectName}`);
+        } catch (err) {
+          next(err);
+        }
+    },
+    addingTeacherToSubject : async function (req, res, next) {
+        const {subjectName}  = req.body;
+        const { teacherId } = req.body;
+        try {
+            const { id } = await db.oneOrNone('SELECT * FROM subject WHERE name = $1;',[subjectName])
+            console.log(teacherId, "and" , id)
+          
+            await db.oneOrNone('select * from link_teacher_to_subject($1, $2);',[teacherId,id])
+            res.redirect(`/subjects/subject-selection/${subjectName}`)
+          
+        } 
+        catch (err) {
+  
+            next(err);
+      }
+      }
+      
+
 
 };

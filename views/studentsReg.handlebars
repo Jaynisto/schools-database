@@ -16,7 +16,7 @@
 </head>
 <body class="custom-background">
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <a class="navbar-brand text-primary-emphasis" href="/">Schools</a>
+        <a class="navbar-brand text-primary-emphasis" href="/"><strong>Johsons High School</strong></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -44,45 +44,45 @@
             <div class="row justify-content-center align-items-center h-100">
             <div class="col-12 col-lg-9 col-xl-7">
                 <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
-                <div class="card-body p-4 p-md-5">
-                    <h3 class="mb-4 pb-2 pb-md-0 mb-md-5"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Student Registration Form</h3>
-                    <form action="/student/register-student" method="POST">
+                    <div class="card-body p-4 p-md-5">
+                        <h3 class="mb-4 pb-2 pb-md-0 mb-md-5"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Student Registration Form</h3>
+                        <form action="/student/register-student" method="POST">
 
-                        <div class="row">
-                            <div class="col-md-6 mb-4">
-                                <div class="form-outline">
-                                    <input type="text" name="firstName" class="form-control form-control-lg" placeholder="First Name"/>
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <input type="text" name="firstName" class="form-control form-control-lg" placeholder="First Name"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <input type="text" name="lastName" class="form-control form-control-lg" placeholder="Last Name"/>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-6 mb-4">
-                                <div class="form-outline">
-                                    <input type="text" name="lastName" class="form-control form-control-lg" placeholder="Last Name"/>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="row">
-                            <div class="col-md-6 mb-4">
-                                <div class="form-outline">
-                                    <input type="email" name="email" class="form-control form-control-lg" placeholder="Email" />
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <input type="email" name="email" class="form-control form-control-lg" placeholder="Email" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                    <select name="grade" class="select form-control form-control-lg">
+                                        <option disabled selected>Choose Grade</option>
+                                        {{#each grades}}
+                                        <option value="{{id}}">{{name}}</option>
+                                        {{/each}}
+                                    </select>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-6 mb-4">
-                                <div class="form-outline">
-                                <select name="grade" class="select form-control form-control-lg">
-                                    <option disabled selected>Choose Grade</option>
-                                    {{#each grades}}
-                                    <option value="{{id}}">{{name}}</option>
-                                    {{/each}}
-                                </select>
-                                </div>
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-lg"><i class="fa fa-paper-plane-o" aria-hidden="true"></i> Submit</button>
-                    </form>
+                            <button type="submit" class="btn btn-primary btn-lg"><i class="fa fa-paper-plane-o" aria-hidden="true"></i> Submit</button>
+                        </form>
+                     </div>
+                    </div>
                 </div>
-                </div>
-            </div>
             </div>
         </div>
     </section>

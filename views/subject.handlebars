@@ -5,15 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css">
+    {{!-- fontAwesom --}}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     {{!-- bootstrap --}}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
     crossorigin="anonymous">
     <title>Subjects</title>
 </head>
-<body>
+<body class="custom-background">
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <a class="navbar-brand text-primary-emphasis" href="/">Schools</a>
+        <a class="navbar-brand text-primary-emphasis" href="/"><strong>Johsons High School</strong></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -35,7 +38,7 @@
         </div>
     </nav>
     <br><br><br><br>
-    <form action="/subjects" method="POST">
+    <form action="/subjects/subject-selection" method="POST">
         <div class="dropdown text-center">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
              Select Subject
@@ -52,17 +55,18 @@
     <h4>Bellow is list of all the <strong>Teacher/s</strong> teaching {{subjectName}}.</h4>
     <br>
     <br>
-    <table class="table table-hover table-dark">
-        <thead>
+    <table class="table table-hover table-bordered table-info">
+        <thead class="table-dark ">
             <tr>
             <th scope="col">#</th>
             <th scope="col">First Name</th>
             <th scope="col">Last Name</th>
             <th scope="col">Email Adress</th>
+            <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
-            {{#each teacher}}
+            {{#each teachers}}
             <tr>
                 <th scope="row">{{id}}</th>
                 <td>{{first_name}}</td>
@@ -71,9 +75,12 @@
                 <td>
                     <div class="col-md-6 mb-3">
                         <form action="/subjects/remove-teacher" method="post">
-                            <input type="hidden" name="teachersName" value="{{id}}">
-                            <button type="submit" class="btn btn-danger">Remove Teacher</button>
+                            <input type="hidden" name="teachersId" value="{{id}}">
+                            <button type="submit" class="btn btn-danger">
+                                <i class="fa fa-trash" aria-hidden="true"></i> Remove
+                            </button>
                         </form>
+
                     </div>
                     
                 </td>
@@ -84,7 +91,7 @@
     <br>
     <div class="row">
         <div class="col-md-6 mb-3">
-            <form action="/addTeacher" method="post">
+            <form action="/adding-teacher-to-subject" method="post">
             <input type="hidden" name="subjectName" value="{{subjectName}}">
             <div class="form-group">
                 <select name="teacherId" class="form-control">

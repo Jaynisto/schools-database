@@ -38,6 +38,13 @@ app.get('/head-of-department/moderation', routes.showHeadOfDepartmentPage)
 app.get('/subjects/subject-selection', routes.showSubjectModerationPage)
 app.post('/student/register-student',routes.postStudentData)
 app.post('/teacher/register-teacher',routes.postTeachersData)
+app.post('/subjects/subject-selection',routes.subjectSession)
+app.get('/subjects/subject-selection/:name',routes.gettingSubjectSession)
+app.get('/subjects/remove-teacher', routes.showSubjectModerationPage)
+app.post('/subjects/remove-teacher', routes.removingTeacherFromSubjects);
+app.get('/adding-teacher-to-subject', routes.showSubjectModerationPage)
+app.post('/adding-teacher-to-subject', routes.addingTeacherToSubject)
+
 
 
 const PORT = process.env.PORT || 5050;
