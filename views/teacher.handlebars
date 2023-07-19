@@ -37,13 +37,13 @@
     <br>
     <br>
     <br><br><br><br>
-    <form action="/teacher" method="POST">
+    <form action="/teachers/teacher-selection" method="POST">
         <div class="dropdown text-center">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
              Select Teacher
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                {{#each listOfTeachers}}
+                {{#each teachers}}
                     <button class="dropdown-item" type="submit" name="teacherId" value="{{id}}">{{first_name}}</button>
                 {{/each}}
             </div>
@@ -53,36 +53,36 @@
     <br><br>
     <h4>Bellow is the list of <strong>Subject/s</strong> that {{teachersName}} teaches.</h4>
     <br>
-    <table class="table table-hover table-dark">
-        <thead>
+    <table class="table table-hover table-bordered table-info">
+        <thead class="table-dark">
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Subject Name</th>
+                <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
-            {{#each listOfSubject}}
+            {{#each subjects}}
             <tr>
                 <th scope="row">{{id}}</th>
                 <td>{{name}}</td>
+                <td>
+                    <div class="col-md-6 mb-3">
+                        <form action="/teacher/remove-subject" method="post">
+                            <input type="hidden" name="subjectId" value="{{id}}">
+                            <button type="submit" class="btn btn-danger">
+                                <i class="fa fa-trash" aria-hidden="true"></i> Remove
+                            </button>
+                        </form>
+
+                    </div>
+                    
+                </td>
             </tr>
             {{/each}}
         </tbody>
     </table><br>
     <div class="row">
-        <div class="col-md-6 mb-3">
-            <form action="/clearingSubject" method="post">
-                <input type="hidden" name="teachersName" value="{{teachersName}}">
-                <div class="form-group">
-                    <select name="subjectId" class="form-control">
-                    {{#each listOfSubject}}
-                        <option value="{{id}}">{{name}}</option>
-                    {{/each}}
-                    </select>
-                </div>
-                <button type="submit" class="btn btn-danger">Clear Subject</button>
-            </form>
-        </div>
         <div class="col-md-6 mb-3">
             <form action="/addingSubjectToTeacher" method="post">
                 <input type="hidden" name="teachersName" value="{{teachersName}}">

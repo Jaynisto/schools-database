@@ -44,6 +44,10 @@ app.get('/subjects/remove-teacher', routes.showSubjectModerationPage)
 app.post('/subjects/remove-teacher', routes.removingTeacherFromSubjects);
 app.get('/adding-teacher-to-subject', routes.showSubjectModerationPage)
 app.post('/adding-teacher-to-subject', routes.addingTeacherToSubject)
+app.get('/teachers/teacher-selection', routes.showTeacherModerationPage)
+app.post('/teachers/teacher-selection', routes.teacherSession)
+app.get('/teachers/teacher-selection/:first_name',routes.gettingTeacherSession)
+app.post('/teacher/remove-subject', routes.removingSubjectFromTeacher)
 
 
 
